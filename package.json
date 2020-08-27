@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "changelog": "cp package.json _package.json &&preset=`conventional-commits-detector` && echo $preset && bump=`conventional-recommended-bump -p angular` && echo ${1:-$bump} && npm --no-git-tag-version version ${1:-$bump} &>/dev/null && conventional-changelog -i CHANGELOG.md -s -p ${2:-$preset} && git add CHANGELOG.md package.json package-lock.json && version=`cat package.json` && git commit -m'docs(CHANGELOG): $version' && mv -f _package.json package.json && npm version ${1:-$bump} -m 'chore(release): %s' && git push --follow-tags "
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -21,12 +20,20 @@
   "homepage": "https://github.com/cxuhwiuefhuefu/commitCheck#readme",
   "devDependencies": {
     "commitizen": "^4.2.1",
-    "cz-conventional-changelog": "^3.2.1"
+    "commitlint-config-cz": "^0.13.2",
+    "cz-conventional-changelog": "^3.2.1",
+    "cz-customizable": "^6.3.0",
+    "husky": "^4.2.5"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "node_modules/cz-customizable"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
