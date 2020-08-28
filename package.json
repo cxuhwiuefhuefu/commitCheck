@@ -26,6 +26,7 @@
     "conventional-changelog": "^3.1.23",
     "cz-conventional-changelog": "^3.2.1",
     "cz-customizable": "^6.3.0",
+    "eslint": "^7.7.0",
     "husky": "^4.2.5"
   },
   "config": {
@@ -38,5 +39,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "eslintConfig": {
+    
   }
 }
